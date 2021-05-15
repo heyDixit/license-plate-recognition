@@ -7,7 +7,7 @@ pytesseract.pytesseract.tesseract_cmd =r"C:\Program Files\Tesseract-OCR\tesserac
 
 # Reading the image file
 
-image = cv2.imread("2.jpg") 
+image = cv2.imread("weBqKE0S.jpg") 
 image=imutils.resize(image, width=500)
 cv2.imshow("Orignal Image", image)
 
@@ -19,7 +19,7 @@ gray = cv2.cvtColor(image , cv2.COLOR_BGR2GRAY)
 cv2.imshow("Gray Scale Image", gray)
 #cv2.waitKey(0)
 
-#now we will reduce noise from the image and make it smooth
+# now we will reduce noise from the image and make it smooth
 
 gray = cv2.bilateralFilter(gray, 11 , 17 , 17)
 cv2.imshow("Smoother Image", gray)
@@ -74,7 +74,18 @@ for i in cntns:
 
         break
 
-    #now we will draw contour in our main image that we have identified as a number plate 
+#now we will draw contour in our main image that we have identified as a number plate 
 cv2.drawContours(image, [NumberPlateCount] , -1 , (0,255,0),3)
 cv2.imshow("Final image", image)
 cv2.waitKey(0)
+
+#We will crop only the part of number plate
+crop_img_loc= 'cropped.jpg'
+cv2.imshow("cropped image", cv2.imread(crop_img_loc))
+
+
+text = pytesseract.image_to_string(crop_img_loc,lang="eng")
+print('Number is:', text)
+cv2.waitKey(0)
+
+
