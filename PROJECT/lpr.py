@@ -7,11 +7,10 @@ pytesseract.pytesseract.tesseract_cmd =r"C:\Program Files\Tesseract-OCR\tesserac
 
 # Reading the image file
 
-image = cv2.imread("weBqKE0S.jpg") 
+image = cv2.imread("2.jpg") 
 image=imutils.resize(image, width=500)
 cv2.imshow("Orignal Image", image)
-
-
+cv2.waitKey(0)
 
 # Image Conversion to grayscale
 
